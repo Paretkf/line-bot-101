@@ -12,7 +12,11 @@ app.get('/', async (req, res) => {
     message: 'Hello World v.2 test deploying'
   })
 })
-
+app.post('/webhook', (req, res) => {
+  let reply_token = req.body.events[0].replyToken
+  reply(reply_token)
+  res.sendStatus(200)
+})
 function reply(reply_token) {
   let headers = {
       'Content-Type': 'application/json',
