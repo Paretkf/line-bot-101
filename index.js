@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const CORS = require('cors')({origin: true})
 const app = express()
-const port = 7777
+const port = 5000
 
 app.use(express.static('public'))
 app.use(CORS)
