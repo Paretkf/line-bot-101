@@ -13,27 +13,28 @@ app.get('/', async (req, res) => {
   })
 })
 
-app.post('/webhook', (req, res) => {
-  let reply_token = req.body.events[0].replyToken
-  const data = reply(reply_token)
-  res.sendStatus(200)
-})
-
-const reply = (token) => {
-  const data = axios.post('https://api.line.me/v2/bot/message/reply', {
-    replyToken: token,
+function reply(reply_token) {
+  let headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer {PAFvHNSUVjxIBYqFKku6anaUSHcKIM1QWIYbFIrVA4R0mgY+zrygvbfWjmSIbNGeldODq4IKNQf/MQ4vIQtKm2eBxoAfRJDsGZxHIMXLgyE38bYqVhgUKctU/KXXdqThKHzBjXmhwFNi2e1CzFoBvAdB04t89/1O/w1cDnyilFU=}'
+  }
+  let body = JSON.stringify({
+      replyToken: reply_token,
       messages: [{
-        type: 'text',
-        text: 'Hello'
+          type: 'text',
+          text: 'Hello'
       },
       {
-        type: 'text',
-        text: 'How are you?'
-    }]
-  },
-  {
-    headers: {'Authorization': 'Bearer PAFvHNSUVjxIBYqFKku6anaUSHcKIM1QWIYbFIrVA4R0mgY+zrygvbfWjmSIbNGeldODq4IKNQf/MQ4vIQtKm2eBxoAfRJDsGZxHIMXLgyE38bYqVhgUKctU/KXXdqThKHzBjXmhwFNi2e1CzFoBvAdB04t89/1O/w1cDnyilFU='}
+          type: 'text',
+          text: 'How are you?'
+      }]
   })
-  return data
+  request.post({
+      url: 'https://api.line.me/v2/bot/message/reply',
+      headers: headers,
+      body: body
+  }, (err, res, body) => {
+      console.log('status = ' + res.statusCode);
+  });
 }
 app.listen(PORT, () => console.log('application is listening on:', PORT))
