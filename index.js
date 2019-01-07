@@ -4,15 +4,9 @@ const PORT = process.env.PORT || 5000
 app.use(express.static('public'))
 
 app.get('/', async (req, res) => {
-  let results = []
-  let snapshot = await db.collection('User').get()
-  snapshot.forEach(doc => {
-    results.push(doc.data())
-  })
   res.json({
     status: 200,
-    message: 'Hello World v.2 test deploying',
-    results
+    message: 'Hello World v.2 test deploying'
   })
 })
 
