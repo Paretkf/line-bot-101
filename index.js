@@ -1,17 +1,19 @@
-
 const express = require('express')
-const bodyParser = require('body-parser')
-const CORS = require('cors')({origin: true})
 const app = express()
-const port = 5000
-
-app.use(CORS)
+const PORT = process.env.PORT || 5000
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
 
-app.get('/', (req, res) => res.send({
-  current_date: new Date()
-}))
+app.get('/', async (req, res) => {
+  let results = []
+  let snapshot = await db.collection('User').get()
+  snapshot.forEach(doc => {
+    results.push(doc.data())
+  })
+  res.json({
+    status: 200,
+    message: 'Hello World v.2 test deploying',
+    results
+  })
+})
 
-app.listen(port, () => console.log('application is listening on:', port))
+app.listen(PORT, () => console.log('application is listening on:', PORT))
