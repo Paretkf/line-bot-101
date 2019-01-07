@@ -6,13 +6,12 @@ const app = express()
 const port = 5000
 
 app.use(CORS)
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.get('', (req, res) => res.send({
+app.get('/', (req, res) => res.send({
   current_date: new Date()
 }))
-app.listen(port)
-console.log('Server is running on port: ' + port)
 
-module.exports = app
+app.listen(PORT, () => console.log('application is listening on:', PORT))
