@@ -5,6 +5,7 @@ const CORS = require('cors')({origin: true})
 const app = express()
 const port = 7777
 
+app.use(express.static('public'))
 app.use(CORS)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
