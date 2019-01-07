@@ -14,4 +14,4 @@ app.get('/', (req, res) => res.send({
   current_date: new Date()
 }))
 
-app.listen(PORT, () => console.log('application is listening on:', PORT))
+app.listen(port, () => console.log('application is listening on:', port))
