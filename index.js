@@ -21,7 +21,7 @@ app.post('/webhook', (req, res) => {
 function reply(reply_token) {
   let headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer {PAFvHNSUVjxIBYqFKku6anaUSHcKIM1QWIYbFIrVA4R0mgY+zrygvbfWjmSIbNGeldODq4IKNQf/MQ4vIQtKm2eBxoAfRJDsGZxHIMXLgyE38bYqVhgUKctU/KXXdqThKHzBjXmhwFNi2e1CzFoBvAdB04t89/1O/w1cDnyilFU=}'
+      'Authorization': 'Bearer {W4ZJWdiC3hyFmIBZ6mhb4UuPh0kPPQi15oIqiIsm0qgrOaFDB5K/AIdfRnVJlwS7ldODq4IKNQf/MQ4vIQtKm2eBxoAfRJDsGZxHIMXLgyEgimuHSB2TINohTr/BU+wdmDQh784uu6bMdCD57Uh74wdB04t89/1O/w1cDnyilFU=}'
   }
   let body = JSON.stringify({
       replyToken: reply_token,
