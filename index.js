@@ -9,7 +9,8 @@ app.use(bodyParser.json())
 app.get('/', async (req, res) => {
   res.json({
     status: 200,
-    message: 'Hello World v.2 test deploying'
+    message: 'Line Bot 101 webhook',
+    date: new Date()
   })
 })
 app.post('/webhook', (req, res) => {
@@ -27,11 +28,11 @@ function reply(reply_token) {
       replyToken: reply_token,
       messages: [{
           type: 'text',
-          text: 'Hello'
+          text: 'กินข้าวแล้ว'
       },
       {
           type: 'text',
-          text: 'How are you?'
+          text: 'อย่ามายุ่ง!'
       }]
   })
   request.post({
